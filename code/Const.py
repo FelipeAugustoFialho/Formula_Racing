@@ -12,6 +12,10 @@ ENTITY_SPEED = {
     'Level1Bg2': 5,
 
 }
+
+SPEED = {'ENTITY_SPEED': ENTITY_SPEED}
+
+
 #M
 MENU_OPTION = ['NEW GAME',
                'TOP 10',

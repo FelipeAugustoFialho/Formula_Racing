@@ -11,6 +11,7 @@ from code.EntityFactory import EntityFactory
 
 class Level:
     def __init__(self, window, name,game_mode ):
+
         self.window = window
         self.name = name
         self.entity_list: list[Entity] = []
@@ -19,25 +20,12 @@ class Level:
         self.timeout = 20000
 
 
-
-        # #METODO CHAT
-        # # self.backgrounds = EntityFactory.get_entity('Level1Bg')
-        # # self.player = EntityFactory.get_entity('Player')
-        #     ###
-        # self.timeout = 20000
-        # self.entity_list.append(EntityFactory.get_entity('Player'))
-        # # Criando os dois backgrounds
-        # self.backgrounds = EntityFactory.get_entity('Level1Bg')
-        # self.player = EntityFactory.get_entity('Player')
-        #
-        #  # Tornando game_clock um atributo
-
     def run(self):
         #pygame.mixer_music.load(f'./assets/EngineSound.wav')
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
         while True:
-            clock.tick(60)
+            clock.tick(60)  #FPS
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf,dest=ent.rect)
                 ent.move()

@@ -1,6 +1,8 @@
 import pygame
 from abc import ABC, abstractmethod
 
+
+
 class Entity(ABC):
 
     def __init__(self, name: str, position: tuple, scale_factor: float = 1.0):
