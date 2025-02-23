@@ -8,6 +8,8 @@ class Entity(ABC):
     def __init__(self, name: str, position: tuple, scale_factor: float = 1.0):
         self.name = name
 
+
+
         # Carregar a imagem da pasta 'Cars' (para todos os carros e o jogador)
         original_surf = pygame.image.load(f'./assets/cars/{name}.png').convert_alpha()
 
