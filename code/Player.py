@@ -10,10 +10,6 @@ class Player(Entity):
         super().__init__(name, position, scale_factor)
         self.image = pygame.image.load(f'./assets/cars/Player.png').convert()
 
-        #self.image = pygame.transform.scale(self.image, (150, 150))
-
-        # self.surf = self.image  # Atualiza a superfície usada na renderização
-        # self.rect = self.surf.get_rect(center=position,)
 
 
     def move(self):
@@ -25,9 +21,8 @@ class Player(Entity):
         if pressed_key[pygame.K_RIGHT] and self.rect.right < WIN_WIDTH - 85:
             self.rect.centerx += 8
 
-        # Se pressionar a seta para cima, aumenta a velocidade do fundo
-        # if pressed_key[pygame.K_UP]:
-        #     self.speed += 5
+    def collision(self):
+        pass
 
 
 

@@ -1,6 +1,6 @@
 import pygame
-from code.Const import ENTITY_SPEED, WIN_HEIGHT
-
+from code.Const import ENTITY_SPEED, WIN_HEIGHT, ENTITY_HEALTH
+from code.Entity import Entity
 
 
 class Background:
@@ -9,7 +9,7 @@ class Background:
         self.name = name
         self.acceleration = 0  # Inicializando aceleração
         self.default_speed = ENTITY_SPEED.get(self.name, 5)  # Pega a velocidade padrão
-
+        self.health = ENTITY_HEALTH
         # Carregar o background ou o carro corretamente
         if 'Bg' in name:
             self.surf = pygame.image.load(f'./assets/{name}.png').convert_alpha()
@@ -25,7 +25,8 @@ class Background:
 
         # Se pressionar "Cima", acelera o fundo
         if keys[pygame.K_UP]:
-            self.acceleration += 0.1  # Acelera gradualmente
+            self.acceleration = 8   # Acelera gradualmente
+
         else:
             self.acceleration = 0  # Volta para a velocidade padrão quando a tecla for solta
 
