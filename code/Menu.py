@@ -2,7 +2,6 @@ import pygame.image
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.Const import WIN_WIDTH, C_BLUE, MENU_OPTION, C_WHITE, C_BLACK, C_RED
 
 

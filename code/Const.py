@@ -73,6 +73,7 @@ ENTITY_SCORE = {
     'Enemy5': 100,
     'Enemy6': 100,
     'Player': 0,
+    'Player2':0,
 
 }
 

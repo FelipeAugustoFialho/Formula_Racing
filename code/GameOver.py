@@ -1,7 +1,7 @@
 import sys
 import pygame
 from pygame import Surface
-from code.Const import C_BLUE, C_RED, WIN_WIDTH, WIN_HEIGHT, MENU_OVER
+from code.Const import C_BLUE, C_RED, WIN_WIDTH, WIN_HEIGHT, MENU_OVER, ENTITY_SCORE
 
 
 
@@ -11,6 +11,7 @@ class GameOver:
         self.surf = pygame.image.load('./assets/GameOver.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
         self.menu_over = 0  # Índice da opção selecionada
+
 
     def game_over(self):
         pygame.mixer_music.load('./assets/GameOver.wav')
@@ -72,34 +73,3 @@ class GameOver:
 
 
 
-
-#
-#
-#     def show(self):
-#
-#         pygame.mixer_music.load('./assets/Score.mp3')
-#         pygame.mixer_music.play(-1)
-#         self.window.blit(source=self.surf, dest=self.rect)
-#
-#         pygame.display.flip()
-#         while True:
-#             self.menu_text(20, text='Restart Game', text_color=C_BLUE, text_center_pos=((WIN_WIDTH / 2), 80))
-#             self.menu_text(20, text='Finish Game', text_color=C_RED, text_center_pos=((WIN_WIDTH / 2), 200))
-#
-#             pygame.display.flip()
-#             pass
-#
-#
-#
-#     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-#         text_font: Font = pygame.font.SysFont(name="arialblack", size=text_size)
-#         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-#         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
-#         self.window.blit(source=text_surf, dest=text_rect)
-#
-#
-# def get_formatted_date():
-#     current_datetime = datetime.now()
-#     current_time = current_datetime.strftime("%H:%M")
-#     current_date = current_datetime.strftime("%d/%m/%y")
-#     return f"{current_time} - {current_date}"

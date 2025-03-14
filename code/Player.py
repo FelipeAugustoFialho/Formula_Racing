@@ -4,7 +4,6 @@ from code.Entity import Entity
 
 
 class Player(Entity):
-   # pressed_key = None
 
     def __init__(self, name: str, position: tuple, scale_factor=1.0):
         super().__init__(name, position, scale_factor)

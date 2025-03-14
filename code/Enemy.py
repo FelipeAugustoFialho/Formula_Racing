@@ -1,7 +1,5 @@
 import random
-
 import pygame
-
 from code.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH
 from code.Entity import Entity
 

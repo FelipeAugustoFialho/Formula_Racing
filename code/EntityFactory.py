@@ -1,14 +1,11 @@
 import random
-
 from code.Background import Background
 from code.Const import WIN_HEIGHT, WIN_WIDTH
 from code.Enemy import Enemy
 from code.Player import Player
-import pygame
 
 
 class EntityFactory:
-
 
     @staticmethod
     def get_entity(entity_name: str, position=(0, 0)):
@@ -23,15 +20,12 @@ class EntityFactory:
                 return list_bg
 
             case 'Player':
-                # Carregar imagem do jogador da pasta 'assets/Cars'
-                # return Player('Player', (375, 440), 0.2)
+
                 return Player('Player', (375, 400))
 
             case 'Enemy1':
 
                 return Enemy('Enemy1', (455, random.randint(-WIN_HEIGHT, -1)))
-
-            # return Enemy('Enemy1', (375, random.randint(0, WIN_HEIGHT)))
 
             case 'Enemy2':
                 return Enemy('Enemy2', (375, random.randint(-WIN_HEIGHT, -1)))

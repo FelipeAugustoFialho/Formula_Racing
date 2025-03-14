@@ -1,11 +1,9 @@
 import random
 import sys
 import time
-
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.GameOver import GameOver
 from code.Enemy import Enemy
 from code.Entity import Entity
@@ -25,15 +23,16 @@ class Level:
         self.sprite_group = pygame.sprite.Group()  # Inicializa o grupo de sprites
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
         player = EntityFactory.get_entity('Player')
-        player.score = 0
+        player.score = ENTITY_SCORE['Player']
         self.entity_list.append(player)
-        self.crash_occurred = False  # Adiciona esta variável
+        self.crash_occurred = False
         self.crash_time = 0  # Tempo da colisão
+
 
 
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME, EVENT_SCORE)
 
-        self.timeout = 20000
+
 
 
 
@@ -48,33 +47,31 @@ class Level:
 
 
         while True:
-            clock.tick(60)  # FPS
+            clock.tick(60)
 
 
             for ent in self.entity_list:
                 self.window.blit(ent.surf, ent.rect)
 
-                if hasattr(ent, 'move'):  # Verifica se a entidade tem o método move
-                    ent.move()  # Chama move() apenas para entidades que possuem esse método
+                if hasattr(ent, 'move'):
+                    ent.move()
 
                     # TESTE
                 if isinstance(self.entity_list, list):
                     for ent in self.entity_list:
-                        if isinstance(ent, Enemy):  # Garante que estamos lidando com um inimigo
-                            if ent.rect.top > WIN_HEIGHT:  # Verificando se o inimigo saiu da tela
-                                print(f"Inimigo {ent} saiu da tela, removendo...")
-                                ent.health = 0  # Zera a saúde do inimigo
+                        if isinstance(ent, Enemy):
+                            if ent.rect.top > WIN_HEIGHT:
+
+                                ent.health = 0
 
                             if ent.health == 0:
                                 for player in self.entity_list:
-                                    if isinstance(player, Player):  # Garante que é um jogador
-
+                                    if isinstance(player, Player):
+                                        ENTITY_SCORE['Player'] += ENTITY_SCORE['Enemy1']
                                         player_score = player.score + ent.score  # Soma o score ao jogador
 
 
-
-
-                                        print(f"Score do jogador atualizado para {player_score}.")
+                                        print(f"Score do jogador atualizado para'level' {player_score}.")
 
 
 
@@ -95,13 +92,13 @@ class Level:
                         for ent in self.entity_list:
                             if isinstance(ent,Player):
                                 player_score [0] = ent.score
-                                #Score(self.window).save(player_score)
-                                # AQUI ESTA SALVANDO
-                                Score(self.window).save([player.score])  # Passando uma lista com um único valor
+                                Score(self.window).save(player_score)
+
 
                                 #teste
                                 player_score += ent.score
                                 print(f"Score atualizado do jogador 'crash': {player_score}")
+                                Score(self.window).save(player_score)
 
 
                                 #
@@ -114,14 +111,6 @@ class Level:
                     self.crash_time = pygame.time.get_ticks()  # Marca o tempo da colisão
                     self.crash_occurred = True  # Sinaliza que ocorreu uma colisão
 
-                    ## CHAMAR GAME OVER
-                    # Score(self.window).save(player_score)
-                    # break
-                    # if self.crash_occurred == True:
-                    #     score = player_score
-                    #     score.save(player_score)
-
-
 
 
 
@@ -129,13 +118,12 @@ class Level:
 
                 EntityMediator.verify_collision(entity_list=self.entity_list, sprite_group=self.sprite_group)
 
-               # EntityMediator.verify_health(entity_list=self.entity_list)
-                # No código onde você chama EntityMediator.verify_health
-                EntityMediator.verify_health(entity_list=self.entity_list, window=self.window)
+
+                EntityMediator.verify_health(entity_list=self.entity_list,window=self.window)
 
             # Exibindo textos
-            self.level_text(text_size=18, text=f'{self.name} - Timeout:{self.timeout / 1000:.1f} s',
-                            text_color=C_WHITE, text_center_pos=(120, 10))  # (10, 5))
+            self.level_text(text_size=18, text=f'{self.name} ',
+                            text_color=C_WHITE, text_center_pos=(90, 10))
             self.level_text(text_size=18, text=f'Score: {player_score}',
                              text_color=C_WHITE, text_center_pos=(90, 40))
 

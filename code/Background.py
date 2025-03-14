@@ -1,6 +1,5 @@
 import pygame
 from code.Const import ENTITY_SPEED, WIN_HEIGHT, ENTITY_HEALTH
-from code.Entity import Entity
 
 
 class Background:
